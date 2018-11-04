@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Loja"
+                   namespace="Loja.Entidades">
+  <class name="Produto">
+    <cache usage="nonstrict-read-write"></cache>
+    <id name="Id">
+      <generator class="identity"></generator>
+    </id>
+    <property name="Nome"></property>
+    <property name="Preco"></property>
+    
+    <!-- Força o uso do join ao realizar o select no banco, carregando também as categorias -->
+    <many-to-one name="Categoria" column="CategoriaId" fetch="join"></many-to-one>
+  </class>
+</hibernate-mapping>
